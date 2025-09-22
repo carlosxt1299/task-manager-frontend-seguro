@@ -23,7 +23,7 @@ export const taskService = {
 
   // Update an existing task
   async updateTask(id: string, taskData: UpdateTaskRequest): Promise<Task> {
-    const response = await api.put<Task>(API_ENDPOINTS.TASKS.BY_ID(id), taskData);
+    const response = await api.patch<Task>(API_ENDPOINTS.TASKS.BY_ID(id), taskData);
     return response.data;
   },
 
@@ -34,7 +34,7 @@ export const taskService = {
 
   // Toggle task completion status
   async toggleTask(id: string, done: boolean): Promise<Task> {
-    const response = await api.put<Task>(API_ENDPOINTS.TASKS.BY_ID(id), { done });
+    const response = await api.patch<Task>(API_ENDPOINTS.TASKS.BY_ID(id), { done });
     return response.data;
   }
 };
